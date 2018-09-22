@@ -9,11 +9,10 @@ export class AppComponent {
 
   nome = 'Anderson';
 
-  adicionar(nome: any) {
-    this.nome = nome;
-  }
+  adicionar() {
+    console.log(`Adicionando ${this.nome}`);
 
-  alterarNome(event: any) {
-    this.nome = event.target.value;
+    const numero = Math.round(Math.random() * 100);
+    this.nome = 'João Fonseca ' + numero;
   }
 }
