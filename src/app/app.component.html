@@ -1,26 +1,40 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center">
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-  <div class="container">
+  <img width="300" alt="Angular Logo"
+       src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+</div>
 
-    <!--REMOVE E ADICIONA O ELEMENTO-->
-    <div *ngIf="adicionado" class="alert alert-success" role="alert">
-        Funcionário Adicionado: <strong>{{ nome }}</strong>
+<div class="container">
+
+  <!--REMOVE E ADICIONA O ELEMENTO-->
+  <div *ngIf="adicionado" class="alert alert-success" role="alert">
+    Funcionário Adicionado: <strong>{{ nome }}</strong>
+  </div>
+
+  <!--APENAS OCULTA O ELEMENTO-->
+  <div [hidden]="!adicionado" class="alert alert-success" role="alert">
+    Funcionário Adicionado: <strong>{{ nome }}</strong>
+  </div>
+
+  <div class="form-group">
+    <label>Nome</label>
+    <input type="text" class="form-control" [(ngModel)]="nome" (focus)="adicionado = false"/>
+  </div>
+
+  <button type="button" class="btn btn-primary"
+          (click)="adicionar()"
+          bind-disabled="nome.length == 0">Adicionar
+  </button>
+
+  <div class="row" style="margin-top: 20px; padding: 10px;">
+    <div col="2" *ngFor="let funcionario of funcionarios">
+      <div class="card">
+        <img class="card-img-top" src="https://randomuser.me/api/portraits/men/{{ funcionario.id }}.jpg" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">{{ funcionario.nome }}</h5>
+        </div>
+      </div>
     </div>
-
-    <!--APENAS OCULTA O ELEMENTO-->
-    <div [hidden]="!adicionado" class="alert alert-success" role="alert">
-      Funcionário Adicionado: <strong>{{ nome }}</strong>
-    </div>
-
-    <div class="form-group">
-      <label>Nome</label>
-      <input type="text" class="form-control" [(ngModel)]="nome" (focus)="adicionado = false"/>
-    </div>
-
-    <button type="button" class="btn btn-primary"
-            (click)="adicionar()"
-            bind-disabled="nome.length == 0">Adicionar</button>
   </div>
 </div>
 
