@@ -27,13 +27,8 @@
   </button>
 
   <div class="row" style="margin-top: 20px; padding: 10px;">
-    <div col="2" *ngFor="let funcionario of funcionarios">
-      <div class="card">
-        <img class="card-img-top" src="https://randomuser.me/api/portraits/men/{{ funcionario.id }}.jpg" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">{{ funcionario.nome }}</h5>
-        </div>
-      </div>
+    <div col="2" *ngFor="let func of funcionarios">
+        <app-funcionario-card [funcionario]="func"></app-funcionario-card>
     </div>
   </div>
 </div>
