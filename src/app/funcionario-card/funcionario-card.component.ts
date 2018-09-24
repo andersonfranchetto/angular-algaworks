@@ -10,5 +10,10 @@ export class FuncionarioCardComponent {
   //PODERIA USAR UM ALIAS POR EXEMPLO: @Input('Fun')
   @Input() funcionario: any;
 
-  constructor() { }
+  getEstilosCartao() {
+    return {
+      borderWidth: this.funcionario.id + 'px',
+      backgroundColor: this.funcionario.id % 2 === 0 ? 'lightblue' : 'lightgreen'
+    };
+  }
 }
